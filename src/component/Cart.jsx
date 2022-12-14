@@ -29,9 +29,29 @@ const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem}) => {
                       <td>{ cart.name }</td>
                       <td>{ cart.quantity }</td>
                       <td className='text-center'>
-                        <button className="btn btn-sm btn-success mx-2" onClick={() => addToCart(cart)}><fa.FaPlusCircle /></button>
-                        <button className="btn btn-sm btn-warning mx-2" onClick={() => reduceCartItem(cart.id)}><fa.FaMinusCircle /></button>
-                        <button className="btn btn-sm btn-error mx-2" onClick={() => removeCartItem(cart.id)}><fa.FaTrash /></button>
+                        <button 
+                            className="btn btn-sm btn-success mx-2" 
+                            onClick={
+                                () => addToCart(cart)
+                            }>
+                            <fa.FaPlusCircle />
+                        </button>
+                        <button 
+                            className="btn btn-sm btn-warning mx-2" 
+                            onClick={
+                                () => reduceCartItem(cart.id)
+                            } 
+                            disabled={cart.quantity === 1}>
+                            <fa.FaMinusCircle />
+                        </button>
+                        <button 
+                            className="btn btn-sm btn-error mx-2" 
+                            onClick={
+                                () => 
+                                removeCartItem(cart.id)
+                            }>
+                            <fa.FaTrash />
+                        </button>
                       </td>
                     </tr>
                     ))
