@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import React from 'react'
+import React, { seState, useEffect }from 'react'
 import { BsFillMoonStarsFill } from 'react-icons/bs'
 import './../App.css'
 
