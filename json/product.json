@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "name": "Baju Koko",
+        "price": 200000
+    },
+    {
+        "id": 2,
+        "name": "Baju Gamis",
+        "price": 200000
+    },
+    {
+        "id": 3,
+        "name": "Celana Jeans",
+        "price": 150000
+    },
+    {
+        "id": 4,
+        "name": "Celana Cino M",
+        "price": 100000
+    },
+    {
+        "id": 5,
+        "name": "Kostum Naruto",
+        "price": 300000
+    }
+]

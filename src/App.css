@@ -1,0 +1,27 @@
+/* #root {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+} */
+
+.dark {
+  background-color: rgb(36, 35, 35);
+}
+
+.btn {
+  @apply border-none font-bold py-2 px-4 !important;
+}
+.btn-rounded {
+  @apply rounded-full !important;
+}
+.btn-custom-primary {
+  @apply text-gray-100 dark:text-gray-100 bg-gray-700 dark:bg-gray-700 !important;
+}
+.btn-custom-primary:hover {
+  @apply hover:bg-blue-900 dark:hover:bg-blue-900 !important;
+}
+.card-custom {
+  @apply card lg:w-full md:w-full sm:w-full bg-gray-200 dark:bg-slate-800 shadow-lg mb-10
+}
