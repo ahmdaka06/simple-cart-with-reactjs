@@ -9,11 +9,11 @@ const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem}) => {
         
     }, []);
     return (
-        <div className="card w-full bg-base-100 dark:bg-slate-800 shadow-xl">
+        <div className="card-custom">
             <div className="card-body">
               <h2 className="card-title">Keranjang</h2>
               <hr />
-              <div className="overflow-x-auto">
+              <div className="overflow-x-auto relative">
                 <table className="table w-full  dark:text-slate-900">
                   <thead>
                     <tr>

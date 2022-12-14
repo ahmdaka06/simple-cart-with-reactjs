@@ -15,35 +15,36 @@ const Product  = ({addToCart}) => {
         setProducts(response);
     }
     return (
-        <div className="card w-full bg-base-100 dark:bg-slate-800 shadow-xl">
-          <div className="card-body">
-            <h2 className="card-title">Produk</h2>
-            <hr />
-            <div className="overflow-x-auto">
-              <table className="table w-full  dark:text-slate-900">
-                <thead>
-                  <tr>
-                    <th>Nama Produk</th>
-                    <th className='text-center'>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {
-                  products.map((product) => (
-                  <tr key={product.id}>
-                    <td>{ product.name }</td>
-                    <td className='text-center'>
-                      <button className="btn btn-custom-primary" onClick={() => addToCart(product)}><md.MdAddShoppingCart /></button>
-                    </td>
-                  </tr>
-                  ))
-                }
-                  
-                </tbody>
-              </table>
-            </div>
+        <div class="overflow-x-auto relative"><div className="card-custom">
+        <div className="card-body">
+          <h2 className="card-title">Produk</h2>
+          <hr />
+          <div class="overflow-x-auto relative">
+          <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <thead>
+                <tr>
+                  <th>Nama Produk</th>
+                  <th className='text-center'>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+              {
+                products.map((product) => (
+                <tr key={product.id}>
+                  <td>{ product.name }</td>
+                  <td className='text-center'>
+                    <button className="btn btn-custom-primary" onClick={() => addToCart(product)}><md.MdAddShoppingCart /></button>
+                  </td>
+                </tr>
+                ))
+              }
+                
+              </tbody>
+            </table>
           </div>
         </div>
+      </div></div>
+        
     )
 }
 export default Product;
