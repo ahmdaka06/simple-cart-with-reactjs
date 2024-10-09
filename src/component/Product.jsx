@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import * as md from "react-icons/md";
 import './../App.css'
 import axios from "axios";
+import { currencyIDR } from './../utils/currency';
 
 const Product  = ({addToCart}) => {
     const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ const Product  = ({addToCart}) => {
                     <tr>
                       <th>Nama Produk</th>
                       <th>Harga</th>
-                      <th className='text-center'>Aksi</th>
+                      <th className="text-center">Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -34,8 +35,8 @@ const Product  = ({addToCart}) => {
                     products.map((product) => (
                     <tr key={product.id}>
                       <td>{ product.name }</td>
-                      <td>{ product.price }</td>
-                      <td className='text-center'>
+                      <td>{ currencyIDR(product.price) }</td>
+                      <td className="text-center">
                         <button className="btn btn-sm btn-success" onClick={() => addToCart(product)}><md.MdAddShoppingCart /></button>
                       </td>
                     </tr>

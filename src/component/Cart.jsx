@@ -3,6 +3,7 @@ import * as md from "react-icons/md";
 import './../App.css'
 import axios from "axios";
 import * as fa from "react-icons/fa";
+import { currencyIDR } from './../utils/currency';
 
 const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem}) => {
     useEffect(() => {
@@ -19,6 +20,7 @@ const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem}) => {
                     <tr>
                       <th>Nama Produk</th>
                       <th>Jumlah</th>
+                      <th className="text-center">Harga</th>
                       <th className='text-center'>Aksi</th>
                     </tr>
                   </thead>
@@ -28,6 +30,7 @@ const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem}) => {
                     <tr key={cart.id}>
                       <td>{ cart.name }</td>
                       <td>{ cart.quantity }</td>
+                      <td>{ currencyIDR(cart.price) }</td>
                       <td className='text-center'>
                         <button 
                             className="btn btn-sm btn-success mx-2" 
