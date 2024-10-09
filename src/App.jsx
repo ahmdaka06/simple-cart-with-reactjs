@@ -10,6 +10,7 @@ function App() {
   // state
   const initCart = () => JSON.parse(localStorage.getItem('carts')) || [];
   const [carts, setCarts] = useState(initCart);
+  const [products, setProducts] = useState([]);
 
   // hooks
   useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
       document.querySelector('body').classList.remove('dark');
     }
     window.localStorage.setItem('carts', JSON.stringify(carts))
+    listProducts();
   }, [carts]);
 
   const addToCart = async (item) => {
@@ -29,6 +31,7 @@ function App() {
     });
     if (index !== -1) {
       carts[index].quantity = carts[index].quantity + 1;
+      carts[index].price = item.price * carts[index].quantity;
       setCarts([...carts])
     } else {
       setCarts([...carts, {
@@ -40,16 +43,32 @@ function App() {
     }
   }
 
+  const listProducts = async () => {
+    try {
+      const response = await fetch('../json/product.json');
+      if (!response.ok) {
+        throw new Error(response.statusText)
+      }
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error('Error fetching product list:', error);
+      return [];
+    }
+  }
+
   const removeCartItem = async (id) => {
     setCarts(carts.filter(i => i.id !== id))
   }
 
-  const reduceCartItem = async (id) => {
+  const reduceCartItem = async (id, items) => {
     const index = carts.findIndex(cart => {
       return cart.id == id;
     });
+    const productPrice = products.find(p => p.id == id).price;
     if (index !== -1) {
       carts[index].quantity = carts[index].quantity == 1 ? 1 : carts[index].quantity - 1;
+      carts[index].price = carts[index].quantity == 1 ? productPrice : carts[index].price - productPrice;
     }
     setCarts([...carts])
   }
@@ -59,8 +78,17 @@ function App() {
       <Navbar />
       <div className='container mx-auto mt-5 px-5'>
         <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 grid-cols-1 gap-10">
-          <Product addToCart={addToCart} />
-          <Cart carts={carts} addToCart={addToCart} reduceCartItem={reduceCartItem} removeCartItem={removeCartItem} />
+          <Product 
+            addToCart={addToCart} 
+            products={products}
+          />
+          <Cart 
+            carts={carts} 
+            addToCart={addToCart} 
+            reduceCartItem={reduceCartItem} 
+            removeCartItem={removeCartItem}  
+            products = {products}
+          />
         </div>
         
       

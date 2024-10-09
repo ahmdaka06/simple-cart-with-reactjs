@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import * as md from "react-icons/md";
 import './../App.css'
-import axios from "axios";
 import * as fa from "react-icons/fa";
 import { currencyIDR } from './../utils/currency';
 
-const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem}) => {
-    useEffect(() => {
-        
-    }, []);
+const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem, products}) => {
     return (
         <div className="card-custom">
             <div className="card-body">
@@ -42,7 +38,7 @@ const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem}) => {
                         <button 
                             className="btn btn-sm btn-warning mx-2" 
                             onClick={
-                                () => reduceCartItem(cart.id)
+                                () => reduceCartItem(cart.id, )
                             } 
                             disabled={cart.quantity === 1}>
                             <fa.FaMinusCircle />

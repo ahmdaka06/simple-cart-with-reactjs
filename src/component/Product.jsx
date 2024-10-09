@@ -4,17 +4,7 @@ import './../App.css'
 import axios from "axios";
 import { currencyIDR } from './../utils/currency';
 
-const Product  = ({addToCart}) => {
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        listProducts();
-    }, []);
-    let listProducts = async () => {
-        let request = await axios.get(`../json/product.json`);
-        let response = request.data;
-        setProducts(response);
-    }
+const Product  = ({addToCart, products}) => {
     return (
         <div className="overflow-x-auto relative">
           <div className="card-custom">
