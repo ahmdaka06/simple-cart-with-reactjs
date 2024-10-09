@@ -55,7 +55,7 @@ function App() {
   }
   
   return (
-    <div className="h-max lg:h-screen md:h-screen sm:h-screen w-full dark:text-white">
+    <div className="h-max lg:h-screen md:h-screen sm:h-full w-full dark:text-white">
       <Navbar />
       <div className='container mx-auto mt-5 px-5'>
         <div className="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 grid-cols-1 gap-10">

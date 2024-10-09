@@ -15,10 +15,6 @@ class Navbar extends React.Component {
   }
 
   setDarkMode = () => {
-    // this.setState({
-    //   darkMode: !this.state.darkMode
-    // });
-    console.log(localStorage.getItem('theme'));
     if (localStorage.getItem('theme') === 'dark') {
       document.querySelector('body').classList.remove('dark');
       this.state.darkMode = false;

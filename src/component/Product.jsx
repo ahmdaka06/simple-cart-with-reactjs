@@ -15,16 +15,17 @@ const Product  = ({addToCart}) => {
         setProducts(response);
     }
     return (
-        <div class="overflow-x-auto relative">
+        <div className="overflow-x-auto relative">
           <div className="card-custom">
             <div className="card-body">
               <h2 className="card-title">Produk</h2>
               <hr />
-              <div class="overflow-x-auto relative">
+              <div className="overflow-x-auto relative">
               <table className="table w-full  dark:text-slate-900">
                   <thead>
                     <tr>
                       <th>Nama Produk</th>
+                      <th>Harga</th>
                       <th className='text-center'>Aksi</th>
                     </tr>
                   </thead>
@@ -33,6 +34,7 @@ const Product  = ({addToCart}) => {
                     products.map((product) => (
                     <tr key={product.id}>
                       <td>{ product.name }</td>
+                      <td>{ product.price }</td>
                       <td className='text-center'>
                         <button className="btn btn-sm btn-success" onClick={() => addToCart(product)}><md.MdAddShoppingCart /></button>
                       </td>
