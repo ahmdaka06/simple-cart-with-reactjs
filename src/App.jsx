@@ -30,8 +30,9 @@ function App() {
       return cart.id == item.id;
     });
     if (index !== -1) {
+      const productPrice = products.find(p => p.id == item.id).price;
       carts[index].quantity = carts[index].quantity + 1;
-      carts[index].price = item.price * carts[index].quantity;
+      carts[index].price = productPrice * carts[index].quantity;
       setCarts([...carts])
     } else {
       setCarts([...carts, {
@@ -61,7 +62,7 @@ function App() {
     setCarts(carts.filter(i => i.id !== id))
   }
 
-  const reduceCartItem = async (id, items) => {
+  const reduceCartItem = async (id) => {
     const index = carts.findIndex(cart => {
       return cart.id == id;
     });
@@ -71,6 +72,10 @@ function App() {
       carts[index].price = carts[index].quantity == 1 ? productPrice : carts[index].price - productPrice;
     }
     setCarts([...carts])
+  }
+
+  const totalCart = () => {
+    return carts.reduce((total, item) => total + item.price, 0);
   }
   
   return (
@@ -87,7 +92,7 @@ function App() {
             addToCart={addToCart} 
             reduceCartItem={reduceCartItem} 
             removeCartItem={removeCartItem}  
-            products = {products}
+            totalCart={totalCart}
           />
         </div>
         

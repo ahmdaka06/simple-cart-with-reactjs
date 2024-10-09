@@ -4,7 +4,8 @@ import './../App.css'
 import * as fa from "react-icons/fa";
 import { currencyIDR } from './../utils/currency';
 
-const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem, products}) => {
+const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem, totalCart}) => {
+
     return (
         <div className="card-custom">
             <div className="card-body">
@@ -55,6 +56,10 @@ const Cart  = ({carts, addToCart, reduceCartItem, removeCartItem, products}) => 
                     </tr>
                     ))
                   }
+                  <tr>
+                    <td colSpan="2" className="text-left">Total</td>
+                    <td colSpan="4" className="text-right">{ currencyIDR(totalCart()) }</td>
+                  </tr>
                   </tbody>
                 </table>
               </div>
